@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  padding: 0;
+  color: #222;
+  font-family: sans-serif;
+  font-size: 11px;
+  overflow: hidden;
+}
+
+#canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -999;
+}
+
+#info {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  z-index: 999;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid #CCC;
+  border-radius: 4px;
+  padding: 3px;
+  min-width: 300px;
+  max-width: 25%;
+}
+
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0 3px;
+}
+
+.colour {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+}
+
+#countdown {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9999;
+  font-size: 5em;
+}
+
+.paused #info,
+.paused #countdown {
+  display: none;
+}

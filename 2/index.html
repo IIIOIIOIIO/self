@@ -1,0 +1,76 @@
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>
+<canvas></canvas>
+<script>
+var random = function (min, max) {
+
+  if (max == null) {
+    max = min;
+    min = 0;
+  }
+
+  return min + Math.floor(Math.random() * (max - min + 1));
+};
+
+
+var randomColour = function () {
+  return [
+    'rgba(',
+    random(0, 255), ',',
+    random(0, 255), ',',
+    random(0, 255), ',',
+    (random(0, 100) / 100),
+    ')'
+  ].join('');
+};
+
+
+var canvas = document.getElementsByTagName('canvas')[0];
+var ctx = canvas.getContext('2d');
+var width;
+var height;
+var count;
+var limit;
+var speed;
+var intvl;
+
+var init = function () {
+
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+  count = 0;
+  limit = random(5, 20);
+  speed = random(10, 290);
+
+  if (intvl) {
+    clearInterval(intvl);
+  }
+
+  intvl = setInterval(draw, speed);
+};
+
+
+var draw = function () {
+
+  if (++count === limit) {
+    init();
+  }
+
+  for (var i = 0.5; i < width; i += 1) {
+    ctx.strokeStyle = randomColour();
+    ctx.beginPath();
+    ctx.moveTo(i, random(0, height / 2));
+    ctx.lineTo(i, random(height / 2, height));
+    ctx.stroke();
+  }
+};
+
+
+init();
+</script>
