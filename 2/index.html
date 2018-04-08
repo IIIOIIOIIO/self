@@ -19,7 +19,6 @@ html, body {
 <canvas></canvas>
 <script>
 var random = function (min, max) {
-
   if (max == null) {
     max = min;
     min = 0;
@@ -50,8 +49,8 @@ var limit;
 var speed;
 var intvl;
 
-var init = function () {
 
+var init = function () {
   width = canvas.width = window.innerWidth;
   height = canvas.height = window.innerHeight;
   count = 0;
@@ -67,7 +66,6 @@ var init = function () {
 
 
 var draw = function () {
-
   if (++count === limit) {
     init();
   }

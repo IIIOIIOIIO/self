@@ -21,7 +21,6 @@
 
 
   var extend = function (obj) {
-
     $.each(slice.call(arguments, 1), function (idx, source) {
       if (source) {
         for (var prop in source) {
@@ -34,14 +33,12 @@
 
 
   var random = function (min, max) {
-
     if (max == null) { max = min; min = 0; }
     return min + Math.floor(Math.random() * (max - min + 1));
   };
 
 
   var randomColour = function () {
-
     return [
       'rgba(',
       random(0, 255), ', ',
@@ -54,7 +51,6 @@
 
 
   function Body(spec) {
-
     extend(this, bodyDefaults, spec);
     var vtx = this.vtx = [];
     var position = this.position;
@@ -68,7 +64,6 @@
 
 
   var createRandomBody = function (stage) {
-
     var width = stage.getWidth();
     var height = stage.getHeight();
     var verts = [ 0, 0 ];
@@ -90,7 +85,6 @@
 
 
   var createStage = function ($el) {
-
     var bodies = [];
     var $canvas = $('<canvas>');
     var ctx = $canvas[0].getContext('2d');
@@ -99,7 +93,6 @@
     var height = $win.height();
 
     function drawBody(body) {
-
       ctx.beginPath();
       ctx.lineWidth = 1;
       ctx.strokeStyle = body.strokeStyle;
@@ -125,7 +118,6 @@
     }
 
     function drawInfoTable() {
-
       $('<table id="info">').html([
         '<tr>',
         '<th width="33%">Created</th><td>', (new Date()).toUTCString(),'</td>',
@@ -159,7 +151,6 @@
     }
 
     function draw() {
-
       var i = bodies.length;
       while (i) { drawBody(bodies[--i]); }
       drawInfoTable();
@@ -168,7 +159,6 @@
 
     // Resize stage to fit window size.
     function resize() {
-
       width = $win.width();
       height = $win.height();
       $canvas.attr('width', width + 'px');
@@ -191,7 +181,6 @@
 
 
   $.fn.self = function (options) {
-
     var stage = createStage(this);
     var bodycount = random(constraints.minBodies, constraints.maxBodies);
 
@@ -206,7 +195,6 @@
     var paused = false;
 
     $body.click(function (e) {
-
       paused = !paused;
 
       if (paused) {
@@ -218,7 +206,6 @@
     });
 
     var intvl = setInterval(function () {
-
       if (paused) {
         return;
       }
